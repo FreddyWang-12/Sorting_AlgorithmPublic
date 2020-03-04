@@ -1,0 +1,3 @@
+/Users/frederickwang/Desktop/CS/GitHub/s20-pa03-sorting-FreddyWang-12/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/Users/frederickwang/Desktop/CS/GitHub/s20-pa03-sorting-FreddyWang-12/cmake-build-debug/CMakeFiles/edit_cache.dir
+/Users/frederickwang/Desktop/CS/GitHub/s20-pa03-sorting-FreddyWang-12/cmake-build-debug/CMakeFiles/Sorting.dir
