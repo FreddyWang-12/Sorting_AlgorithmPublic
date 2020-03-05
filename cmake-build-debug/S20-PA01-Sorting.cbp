@@ -82,6 +82,21 @@
 				</MakeCommands>
 			</Target>
 		</Build>
+		<Unit filename="/Users/frederickwang/Desktop/CS/GitHub/s20-pa03-sorting-FreddyWang-12/DSString.cpp">
+			<Option target="Sorting"/>
+		</Unit>
+		<Unit filename="/Users/frederickwang/Desktop/CS/GitHub/s20-pa03-sorting-FreddyWang-12/DSString.h">
+			<Option target="Sorting"/>
+		</Unit>
+		<Unit filename="/Users/frederickwang/Desktop/CS/GitHub/s20-pa03-sorting-FreddyWang-12/DSVector.h">
+			<Option target="Sorting"/>
+		</Unit>
+		<Unit filename="/Users/frederickwang/Desktop/CS/GitHub/s20-pa03-sorting-FreddyWang-12/Sorter.cpp">
+			<Option target="Sorting"/>
+		</Unit>
+		<Unit filename="/Users/frederickwang/Desktop/CS/GitHub/s20-pa03-sorting-FreddyWang-12/Sorter.h">
+			<Option target="Sorting"/>
+		</Unit>
 		<Unit filename="/Users/frederickwang/Desktop/CS/GitHub/s20-pa03-sorting-FreddyWang-12/main.cpp">
 			<Option target="Sorting"/>
 		</Unit>

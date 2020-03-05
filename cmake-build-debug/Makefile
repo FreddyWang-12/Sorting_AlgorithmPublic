@@ -123,6 +123,60 @@ Sorting/fast:
 	$(MAKE) -f CMakeFiles/Sorting.dir/build.make CMakeFiles/Sorting.dir/build
 .PHONY : Sorting/fast
 
+DSString.o: DSString.cpp.o
+
+.PHONY : DSString.o
+
+# target to build an object file
+DSString.cpp.o:
+	$(MAKE) -f CMakeFiles/Sorting.dir/build.make CMakeFiles/Sorting.dir/DSString.cpp.o
+.PHONY : DSString.cpp.o
+
+DSString.i: DSString.cpp.i
+
+.PHONY : DSString.i
+
+# target to preprocess a source file
+DSString.cpp.i:
+	$(MAKE) -f CMakeFiles/Sorting.dir/build.make CMakeFiles/Sorting.dir/DSString.cpp.i
+.PHONY : DSString.cpp.i
+
+DSString.s: DSString.cpp.s
+
+.PHONY : DSString.s
+
+# target to generate assembly for a file
+DSString.cpp.s:
+	$(MAKE) -f CMakeFiles/Sorting.dir/build.make CMakeFiles/Sorting.dir/DSString.cpp.s
+.PHONY : DSString.cpp.s
+
+Sorter.o: Sorter.cpp.o
+
+.PHONY : Sorter.o
+
+# target to build an object file
+Sorter.cpp.o:
+	$(MAKE) -f CMakeFiles/Sorting.dir/build.make CMakeFiles/Sorting.dir/Sorter.cpp.o
+.PHONY : Sorter.cpp.o
+
+Sorter.i: Sorter.cpp.i
+
+.PHONY : Sorter.i
+
+# target to preprocess a source file
+Sorter.cpp.i:
+	$(MAKE) -f CMakeFiles/Sorting.dir/build.make CMakeFiles/Sorting.dir/Sorter.cpp.i
+.PHONY : Sorter.cpp.i
+
+Sorter.s: Sorter.cpp.s
+
+.PHONY : Sorter.s
+
+# target to generate assembly for a file
+Sorter.cpp.s:
+	$(MAKE) -f CMakeFiles/Sorting.dir/build.make CMakeFiles/Sorting.dir/Sorter.cpp.s
+.PHONY : Sorter.cpp.s
+
 main.o: main.cpp.o
 
 .PHONY : main.o
@@ -159,6 +213,12 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
 	@echo "... Sorting"
+	@echo "... DSString.o"
+	@echo "... DSString.i"
+	@echo "... DSString.s"
+	@echo "... Sorter.o"
+	@echo "... Sorter.i"
+	@echo "... Sorter.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
