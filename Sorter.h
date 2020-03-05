@@ -20,8 +20,7 @@ class Sorter {
         void readWordFile(ifstream& inputFile);
         void sortWordsByWordLength();
         void sortWordsAlphabetically();
-        void printSortedWordFile(ofstream outputFile);
-        void printAllWords();
+        void printSortedWordFile(ofstream& outputFile);
 };
 
 

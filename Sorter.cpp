@@ -33,19 +33,16 @@ void Sorter::readWordFile(ifstream& inputFile){
 }
 
 void Sorter::sortWordsByWordLength(){
-    
+
 }
 
 void Sorter::sortWordsAlphabetically(){
 
 }
 
-void Sorter::printSortedWordFile(ofstream outputFile){
-
-}
-
-void Sorter::printAllWords() {
-    for(int i = 0; i < 12; i++){
-        allWords[i].print();
+void Sorter::printSortedWordFile(ofstream& outputFile){
+    outputFile << length << endl;
+    for(int i = 0; i < length; i++){
+        outputFile << allWords[i].c_str() << endl;
     }
 }

@@ -10,9 +10,10 @@ using namespace std;
 int main(int argc, char* argv[]){
 
     ifstream inputFile(argv[1]);
+    ofstream outputFile(argv[2]);
     Sorter x;
     x.readWordFile(inputFile);
-    x.printAllWords();
+    x.printSortedWordFile(outputFile);
     inputFile.close();
 
     return 0;
