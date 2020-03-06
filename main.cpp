@@ -14,6 +14,7 @@ int main(int argc, char* argv[]){
     Sorter x;
     x.readWordFile(inputFile);
     x.printSortedWordFile(outputFile);
+    x.sortWordsByWordLength();
     inputFile.close();
 
     return 0;
