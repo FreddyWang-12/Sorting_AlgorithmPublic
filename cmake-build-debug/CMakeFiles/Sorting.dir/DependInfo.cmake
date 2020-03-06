@@ -7,6 +7,8 @@ set(CMAKE_DEPENDS_CHECK_CXX
   "/Users/frederickwang/Desktop/CS/GitHub/s20-pa03-sorting-FreddyWang-12/DSString.cpp" "/Users/frederickwang/Desktop/CS/GitHub/s20-pa03-sorting-FreddyWang-12/cmake-build-debug/CMakeFiles/Sorting.dir/DSString.cpp.o"
   "/Users/frederickwang/Desktop/CS/GitHub/s20-pa03-sorting-FreddyWang-12/Sorter.cpp" "/Users/frederickwang/Desktop/CS/GitHub/s20-pa03-sorting-FreddyWang-12/cmake-build-debug/CMakeFiles/Sorting.dir/Sorter.cpp.o"
   "/Users/frederickwang/Desktop/CS/GitHub/s20-pa03-sorting-FreddyWang-12/main.cpp" "/Users/frederickwang/Desktop/CS/GitHub/s20-pa03-sorting-FreddyWang-12/cmake-build-debug/CMakeFiles/Sorting.dir/main.cpp.o"
+  "/Users/frederickwang/Desktop/CS/GitHub/s20-pa03-sorting-FreddyWang-12/stringTests.cpp" "/Users/frederickwang/Desktop/CS/GitHub/s20-pa03-sorting-FreddyWang-12/cmake-build-debug/CMakeFiles/Sorting.dir/stringTests.cpp.o"
+  "/Users/frederickwang/Desktop/CS/GitHub/s20-pa03-sorting-FreddyWang-12/vectorTests.cpp" "/Users/frederickwang/Desktop/CS/GitHub/s20-pa03-sorting-FreddyWang-12/cmake-build-debug/CMakeFiles/Sorting.dir/vectorTests.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "AppleClang")
 

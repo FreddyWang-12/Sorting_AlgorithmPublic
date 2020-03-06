@@ -204,6 +204,60 @@ main.cpp.s:
 	$(MAKE) -f CMakeFiles/Sorting.dir/build.make CMakeFiles/Sorting.dir/main.cpp.s
 .PHONY : main.cpp.s
 
+stringTests.o: stringTests.cpp.o
+
+.PHONY : stringTests.o
+
+# target to build an object file
+stringTests.cpp.o:
+	$(MAKE) -f CMakeFiles/Sorting.dir/build.make CMakeFiles/Sorting.dir/stringTests.cpp.o
+.PHONY : stringTests.cpp.o
+
+stringTests.i: stringTests.cpp.i
+
+.PHONY : stringTests.i
+
+# target to preprocess a source file
+stringTests.cpp.i:
+	$(MAKE) -f CMakeFiles/Sorting.dir/build.make CMakeFiles/Sorting.dir/stringTests.cpp.i
+.PHONY : stringTests.cpp.i
+
+stringTests.s: stringTests.cpp.s
+
+.PHONY : stringTests.s
+
+# target to generate assembly for a file
+stringTests.cpp.s:
+	$(MAKE) -f CMakeFiles/Sorting.dir/build.make CMakeFiles/Sorting.dir/stringTests.cpp.s
+.PHONY : stringTests.cpp.s
+
+vectorTests.o: vectorTests.cpp.o
+
+.PHONY : vectorTests.o
+
+# target to build an object file
+vectorTests.cpp.o:
+	$(MAKE) -f CMakeFiles/Sorting.dir/build.make CMakeFiles/Sorting.dir/vectorTests.cpp.o
+.PHONY : vectorTests.cpp.o
+
+vectorTests.i: vectorTests.cpp.i
+
+.PHONY : vectorTests.i
+
+# target to preprocess a source file
+vectorTests.cpp.i:
+	$(MAKE) -f CMakeFiles/Sorting.dir/build.make CMakeFiles/Sorting.dir/vectorTests.cpp.i
+.PHONY : vectorTests.cpp.i
+
+vectorTests.s: vectorTests.cpp.s
+
+.PHONY : vectorTests.s
+
+# target to generate assembly for a file
+vectorTests.cpp.s:
+	$(MAKE) -f CMakeFiles/Sorting.dir/build.make CMakeFiles/Sorting.dir/vectorTests.cpp.s
+.PHONY : vectorTests.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -222,6 +276,12 @@ help:
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
+	@echo "... stringTests.o"
+	@echo "... stringTests.i"
+	@echo "... stringTests.s"
+	@echo "... vectorTests.o"
+	@echo "... vectorTests.i"
+	@echo "... vectorTests.s"
 .PHONY : help
 
 
