@@ -37,7 +37,7 @@ void Sorter::sortWordsByWordLength(){
         // In progress
         /*for(int i = 0; i < length - 1; i++){
             for(int j = i+ 1; j < length; j++){
-                if(allWords[i].getLength() == allWords[j].getLength()){
+                if(allWords[i].getLength() > allWords[j].getLength()){
                     DSString temp = allWords[i];
                     allWords[i] = allWords[j];
                     allWords[j] = temp;

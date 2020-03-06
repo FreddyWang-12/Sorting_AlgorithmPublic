@@ -13,8 +13,8 @@ int main(int argc, char* argv[]){
     ofstream outputFile(argv[2]);
     Sorter x;
     x.readWordFile(inputFile);
-    x.printSortedWordFile(outputFile);
     x.sortWordsByWordLength();
+    x.printSortedWordFile(outputFile);
     inputFile.close();
 
     return 0;
