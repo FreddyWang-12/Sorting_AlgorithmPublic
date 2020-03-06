@@ -100,12 +100,6 @@
 		<Unit filename="/Users/frederickwang/Desktop/CS/GitHub/s20-pa03-sorting-FreddyWang-12/main.cpp">
 			<Option target="Sorting"/>
 		</Unit>
-		<Unit filename="/Users/frederickwang/Desktop/CS/GitHub/s20-pa03-sorting-FreddyWang-12/stringTests.cpp">
-			<Option target="Sorting"/>
-		</Unit>
-		<Unit filename="/Users/frederickwang/Desktop/CS/GitHub/s20-pa03-sorting-FreddyWang-12/vectorTests.cpp">
-			<Option target="Sorting"/>
-		</Unit>
 		<Unit filename="/Users/frederickwang/Desktop/CS/GitHub/s20-pa03-sorting-FreddyWang-12/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\"/>
 		</Unit>
