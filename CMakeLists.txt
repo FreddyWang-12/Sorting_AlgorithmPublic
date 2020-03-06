@@ -11,7 +11,7 @@ set (EXE_NAME Sorting)
 #   set (input02 "train_target.csv")
 # etc....
 
-set (input01 "")
+set (input01 "LordOfTheRings.txt")
 
 #
 ##########################################
