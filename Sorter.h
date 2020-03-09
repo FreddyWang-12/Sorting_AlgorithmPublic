@@ -21,6 +21,7 @@ class Sorter {
         void sortWordsByWordLength();
         void sortWordsAlphabetically();
         void printSortedWordFile(ofstream& outputFile);
+        void swap(int i, int j);
 };
 
 

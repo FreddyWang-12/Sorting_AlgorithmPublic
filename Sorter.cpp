@@ -35,15 +35,13 @@ void Sorter::readWordFile(ifstream& inputFile){
 void Sorter::sortWordsByWordLength(){
     if(!allWords.isEmpty()){
         // In progress
-        /*for(int i = 0; i < length - 1; i++){
+        for(int i = 0; i < length - 1; i++){
             for(int j = i+ 1; j < length; j++){
                 if(allWords[i].getLength() > allWords[j].getLength()){
-                    DSString temp = allWords[i];
-                    allWords[i] = allWords[j];
-                    allWords[j] = temp;
+                    swap(i, j);
                 }
             }
-        }*/
+        }
     }
     else{
         cout << "There are no words here, dummy." << endl;
@@ -59,4 +57,10 @@ void Sorter::printSortedWordFile(ofstream& outputFile){
     for(int i = 0; i < length; i++){
         outputFile << allWords[i].c_str() << endl;
     }
+}
+
+void Sorter::swap(int i, int j) {
+    DSString temp = allWords[i];
+    allWords[i] = allWords[j];
+    allWords[j] = temp;
 }
