@@ -18,10 +18,12 @@ class Sorter {
     public:
         Sorter();
         void readWordFile(ifstream& inputFile);
-        void sortWordsByWordLength();
+        void sortWordsByWordLength(int start, int end);
         void sortWordsAlphabetically();
         void printSortedWordFile(ofstream& outputFile);
         void swap(int i, int j);
+        int getListLength();
+        int partitionByWordLength(int start, int end);
 };
 
 

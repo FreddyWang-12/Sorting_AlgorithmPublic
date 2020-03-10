@@ -32,19 +32,13 @@ void Sorter::readWordFile(ifstream& inputFile){
     }
 }
 
-void Sorter::sortWordsByWordLength(){
-    if(!allWords.isEmpty()){
-        // In progress
-        for(int i = 0; i < length - 1; i++){
-            for(int j = i+ 1; j < length; j++){
-                if(allWords[i].getLength() > allWords[j].getLength()){
-                    swap(i, j);
-                }
-            }
+void Sorter::sortWordsByWordLength(int start, int end){
+    if(!allWords.isEmpty()) {
+        if (start < end) {
+            int pivotPoint = partitionByWordLength(start, end);
+            sortWordsByWordLength(start, pivotPoint - 1);
+            sortWordsByWordLength(pivotPoint + 1, end);
         }
-    }
-    else{
-        cout << "There are no words here, dummy." << endl;
     }
 }
 
@@ -63,4 +57,21 @@ void Sorter::swap(int i, int j) {
     DSString temp = allWords[i];
     allWords[i] = allWords[j];
     allWords[j] = temp;
+}
+
+int Sorter::getListLength() {
+    return length;
+}
+
+int Sorter::partitionByWordLength(int start, int end) {
+    int i = start - 1;
+    for(int j = start; j < end; j++) {
+        if (allWords[j].getLength() < allWords[end].getLength()){
+            i++;
+            swap(i, j);
+        }
+    }
+    i++;
+    swap(i, end);
+    return i;
 }
