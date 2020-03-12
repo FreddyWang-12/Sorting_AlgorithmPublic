@@ -22,10 +22,10 @@ void Sorter::readWordFile(ifstream& inputFile){
         length = atoi(number);
         allWords = new char *[length];
 
-        char word[40];
+        char word[70];
         for(int i = 0; i < length; i++){
-            inputFile.getline(word, 40, '\n');
-            allWords[i] = new char[40];
+            inputFile.getline(word, 70, '\n');
+            allWords[i] = new char[70];
             strcpy(allWords[i], word);
         }
     }
