@@ -25,6 +25,8 @@ iostream
 /Users/frederickwang/Desktop/CS/GitHub/s20-pa03-sorting-FreddyWang-12/iostream
 fstream
 /Users/frederickwang/Desktop/CS/GitHub/s20-pa03-sorting-FreddyWang-12/fstream
+string.h
+-
 
 /Users/frederickwang/Desktop/CS/GitHub/s20-pa03-sorting-FreddyWang-12/Sorter.h
 DSVector.h
