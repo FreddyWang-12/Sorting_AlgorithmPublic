@@ -6,21 +6,9 @@
 
 #IncludeRegexTransform: 
 
-/Users/frederickwang/Desktop/CS/GitHub/s20-pa03-sorting-FreddyWang-12/DSString.h
-
-/Users/frederickwang/Desktop/CS/GitHub/s20-pa03-sorting-FreddyWang-12/DSVector.h
-iostream
--
-stdexcept
--
-
 /Users/frederickwang/Desktop/CS/GitHub/s20-pa03-sorting-FreddyWang-12/Sorter.cpp
 Sorter.h
 /Users/frederickwang/Desktop/CS/GitHub/s20-pa03-sorting-FreddyWang-12/Sorter.h
-DSVector.h
-/Users/frederickwang/Desktop/CS/GitHub/s20-pa03-sorting-FreddyWang-12/DSVector.h
-DSString.h
-/Users/frederickwang/Desktop/CS/GitHub/s20-pa03-sorting-FreddyWang-12/DSString.h
 iostream
 /Users/frederickwang/Desktop/CS/GitHub/s20-pa03-sorting-FreddyWang-12/iostream
 fstream
@@ -29,10 +17,6 @@ string.h
 -
 
 /Users/frederickwang/Desktop/CS/GitHub/s20-pa03-sorting-FreddyWang-12/Sorter.h
-DSVector.h
-/Users/frederickwang/Desktop/CS/GitHub/s20-pa03-sorting-FreddyWang-12/DSVector.h
-DSString.h
-/Users/frederickwang/Desktop/CS/GitHub/s20-pa03-sorting-FreddyWang-12/DSString.h
 iostream
 /Users/frederickwang/Desktop/CS/GitHub/s20-pa03-sorting-FreddyWang-12/iostream
 fstream

@@ -4,8 +4,6 @@
 
 #include "Sorter.h"
 
-#include "DSVector.h"
-#include "DSString.h"
 #include "iostream"
 #include "fstream"
 #include <string.h>

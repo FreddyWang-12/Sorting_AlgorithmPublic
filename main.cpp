@@ -1,8 +1,6 @@
 #include <iostream>
 #include <fstream>
 #include "Sorter.h"
-#include "DSString.h"
-#include "DSVector.h"
 #include "iostream"
 #include "fstream"
 using namespace std;

@@ -1,5 +1,4 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/Sorting.dir/DSString.cpp.o"
   "CMakeFiles/Sorting.dir/Sorter.cpp.o"
   "CMakeFiles/Sorting.dir/main.cpp.o"
   "Sorting"

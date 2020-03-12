@@ -5,8 +5,6 @@
 #ifndef S20_PA01_SORTING_SORTER_H
 #define S20_PA01_SORTING_SORTER_H
 
-#include "DSVector.h"
-#include "DSString.h"
 #include "iostream"
 #include "fstream"
 using namespace std;
@@ -20,8 +18,8 @@ class Sorter {
     public:
         Sorter();
         void readWordFile(ifstream& inputFile);
-        void sortWordsByWordLength(int start, int end);
-        void sortWordSectionAlpha(int start, int end);
+        void sortWordsByWordLength(int start, int end); //pass by reference
+        void sortWordSectionAlpha(int start, int end); // pass by reference
         void sortAllWordsAlphabetically();
         void printSortedWordFile(ofstream& outputFile);
         void swap(int i, int j);
