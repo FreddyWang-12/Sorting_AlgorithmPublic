@@ -31,32 +31,40 @@ void Sorter::readWordFile(ifstream& inputFile){
     }
 }
 
-void Sorter::sortWordsByWordLength(int start, int end){
+void Sorter::sortWordsByWordLength(int &start, int &end){
     if(allWords != nullptr) {
         if (start < end) {
             int pivotPoint = partitionByWordLength(start, end);
-            sortWordsByWordLength(start, pivotPoint - 1);
-            sortWordsByWordLength(pivotPoint + 1, end);
+            int firstHalf = pivotPoint - 1;
+            int secondHalf = pivotPoint + 1;
+            sortWordsByWordLength(start, firstHalf);
+            sortWordsByWordLength(secondHalf, end);
         }
     }
 }
 
-void Sorter::sortWordSectionAlpha(int start, int end){
+void Sorter::sortWordSectionAlpha(int &start, int &end){
     if(allWords != nullptr) {
         if (start < end) {
             int pivotPoint = partitionAlphabetically(start, end);
-            sortWordSectionAlpha(start, pivotPoint - 1);
-            sortWordSectionAlpha(pivotPoint + 1, end);
+            int firstHalf = pivotPoint - 1;
+            int secondHalf = pivotPoint + 1;
+            sortWordSectionAlpha(start, firstHalf);
+            sortWordSectionAlpha(secondHalf, end);
         }
     }
 }
 
 void Sorter::sortAllWordsAlphabetically() {
-    sortWordSectionAlpha(0, wordLengthCheckpoints[0]);
+    int beginning = 0;
+    sortWordSectionAlpha(beginning, wordLengthCheckpoints[0]);
     for(int i = 0; i < strlen(allWords[length - 1]) - 1; i++){
-        sortWordSectionAlpha(wordLengthCheckpoints[i] + 1, wordLengthCheckpoints[i + 1]);
+        int nextIndex = wordLengthCheckpoints[i] + 1;
+        sortWordSectionAlpha(nextIndex, wordLengthCheckpoints[i + 1]);
     }
-    sortWordSectionAlpha(wordLengthCheckpoints[lastCheckpoint] + 1, length - 1);
+    int finalIndex = wordLengthCheckpoints[lastCheckpoint] + 1;
+    int ending = length - 1;
+    sortWordSectionAlpha(finalIndex, ending);
 }
 
 void Sorter::printSortedWordFile(ofstream& outputFile){
@@ -72,11 +80,11 @@ void Sorter::swap(int i, int j) {
     allWords[j] = temp;
 }
 
-int Sorter::getListLength() {
+int& Sorter::getListLength() {
     return length;
 }
 
-int Sorter::partitionByWordLength(int start, int end) {
+int Sorter::partitionByWordLength(int &start, int &end) {
     int i = start - 1;
     for(int j = start; j < end; j++) {
         if (strlen(allWords[j]) < strlen(allWords[end])){
@@ -89,7 +97,7 @@ int Sorter::partitionByWordLength(int start, int end) {
     return i;
 }
 
-int Sorter::partitionAlphabetically(int start, int end) {
+int Sorter::partitionAlphabetically(int &start, int &end) {
     int i = start - 1;
     for(int j = start; j < end; j++){
         if(strcmp(allWords[j], allWords[end]) < 0){
