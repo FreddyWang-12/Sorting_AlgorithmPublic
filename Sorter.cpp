@@ -20,7 +20,7 @@ void Sorter::readWordFile(ifstream& inputFile){
         char number[15];
         inputFile.getline(number, 15, '\n');
         length = atoi(number);
-        allWords = new char *[length];
+        allWords = new char *[length + 1];
 
         char word[70];
         for(int i = 0; i < length; i++){
