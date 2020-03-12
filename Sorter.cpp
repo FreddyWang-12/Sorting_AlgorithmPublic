@@ -12,28 +12,28 @@ using namespace std;
 
 Sorter::Sorter(){
     length = 0;
+    wordLengthCheckpoints = nullptr;
+    allWords = nullptr;
 }
 
 void Sorter::readWordFile(ifstream& inputFile){
     if(inputFile.is_open()){
-        char number[20];
-        inputFile.getline(number, 20, '\n');
+        char number[15];
+        inputFile.getline(number, 15, '\n');
         length = atoi(number);
+        allWords = new char *[length];
 
-        char word[70];
+        char word[40];
         for(int i = 0; i < length; i++){
-            inputFile.getline(word, 70, '\n');
-            DSString newWord(word);
-            allWords.push_back(newWord);
+            inputFile.getline(word, 40, '\n');
+            allWords[i] = new char[40];
+            strcpy(allWords[i], word);
         }
-    }
-    else{
-        cout << "Good Try! Now put in an actual file that exists, you dummy." << endl;
     }
 }
 
 void Sorter::sortWordsByWordLength(int start, int end){
-    if(!allWords.isEmpty()) {
+    if(allWords != nullptr) {
         if (start < end) {
             int pivotPoint = partitionByWordLength(start, end);
             sortWordsByWordLength(start, pivotPoint - 1);
@@ -42,19 +42,33 @@ void Sorter::sortWordsByWordLength(int start, int end){
     }
 }
 
-void Sorter::sortWordsAlphabetically(){
+void Sorter::sortWordSectionAlpha(int start, int end){
+    if(allWords != nullptr) {
+        if (start < end) {
+            int pivotPoint = partitionAlphabetically(start, end);
+            sortWordSectionAlpha(start, pivotPoint - 1);
+            sortWordSectionAlpha(pivotPoint + 1, end);
+        }
+    }
+}
 
+void Sorter::sortAllWordsAlphabetically() {
+    sortWordSectionAlpha(0, wordLengthCheckpoints[0]);
+    for(int i = 0; i < strlen(allWords[length - 1]) - 1; i++){
+        sortWordSectionAlpha(wordLengthCheckpoints[i] + 1, wordLengthCheckpoints[i + 1]);
+    }
+    sortWordSectionAlpha(wordLengthCheckpoints[lastCheckpoint] + 1, length - 1);
 }
 
 void Sorter::printSortedWordFile(ofstream& outputFile){
     outputFile << length << endl;
     for(int i = 0; i < length; i++){
-        outputFile << allWords[i].c_str() << endl;
+        outputFile << allWords[i] << endl;
     }
 }
 
 void Sorter::swap(int i, int j) {
-    DSString temp = allWords[i];
+    char * temp = allWords[i];
     allWords[i] = allWords[j];
     allWords[j] = temp;
 }
@@ -66,7 +80,7 @@ int Sorter::getListLength() {
 int Sorter::partitionByWordLength(int start, int end) {
     int i = start - 1;
     for(int j = start; j < end; j++) {
-        if (allWords[j].getLength() < allWords[end].getLength()){
+        if (strlen(allWords[j]) < strlen(allWords[end])){
             i++;
             swap(i, j);
         }
@@ -74,4 +88,33 @@ int Sorter::partitionByWordLength(int start, int end) {
     i++;
     swap(i, end);
     return i;
+}
+
+int Sorter::partitionAlphabetically(int start, int end) {
+    int i = start - 1;
+    for(int j = start; j < end; j++){
+        if(strcmp(allWords[j], allWords[end]) < 0){
+            i++;
+            swap(i, j);
+        }
+    }
+    i++;
+    swap(i, end);
+    return i;
+}
+
+void Sorter::createAlphabeticalCheckpoints() {
+    if(wordLengthCheckpoints != nullptr) {
+        delete[] wordLengthCheckpoints;
+    }
+    wordLengthCheckpoints = new int[strlen(allWords[length - 1])];
+    int index = 0;
+
+    for(int i = 0; i < length - 1; i++) {
+        if(strlen(allWords[i + 1]) > strlen(allWords[i])) {
+            wordLengthCheckpoints[index] = i;
+            index++;
+        }
+    }
+    lastCheckpoint = index - 1;
 }

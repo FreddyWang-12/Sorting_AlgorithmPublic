@@ -14,6 +14,8 @@ int main(int argc, char* argv[]){
     Sorter x;
     x.readWordFile(inputFile);
     x.sortWordsByWordLength(0, x.getListLength() - 1);
+    x.createAlphabeticalCheckpoints();
+    x.sortAllWordsAlphabetically();
     x.printSortedWordFile(outputFile);
     inputFile.close();
 

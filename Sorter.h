@@ -13,17 +13,22 @@ using namespace std;
 
 class Sorter {
     private:
-        DSVector<DSString> allWords;
+        char ** allWords;
         int length;
+        int * wordLengthCheckpoints;
+        int lastCheckpoint;
     public:
         Sorter();
         void readWordFile(ifstream& inputFile);
         void sortWordsByWordLength(int start, int end);
-        void sortWordsAlphabetically();
+        void sortWordSectionAlpha(int start, int end);
+        void sortAllWordsAlphabetically();
         void printSortedWordFile(ofstream& outputFile);
         void swap(int i, int j);
         int getListLength();
         int partitionByWordLength(int start, int end);
+        int partitionAlphabetically(int start, int end);
+        void createAlphabeticalCheckpoints();
 };
 
 
