@@ -31,14 +31,12 @@ void Sorter::readWordFile(ifstream& inputFile){
     }
 }
 
-void Sorter::sortWordsByWordLength(int &start, int &end){
+void Sorter::sortWordsByWordLength(int start, int end){
     if(allWords != nullptr) {
         if (start < end) {
             int pivotPoint = partitionByWordLength(start, end);
-            int firstHalf = pivotPoint - 1;
-            int secondHalf = pivotPoint + 1;
-            sortWordsByWordLength(start, firstHalf);
-            sortWordsByWordLength(secondHalf, end);
+            sortWordsByWordLength(start, pivotPoint - 1);
+            sortWordsByWordLength(pivotPoint + 1, end);
         }
         maxWordLength = strlen(allWords[length - 1]);
     }
@@ -84,7 +82,7 @@ int& Sorter::getListLength() {
     return length;
 }
 
-int Sorter::partitionByWordLength(int &start, int &end) {
+int Sorter::partitionByWordLength(int start, int end) {
     int i = start - 1;
     for(int j = start; j < end; j++) {
         if (strlen(allWords[j]) < strlen(allWords[end])){
