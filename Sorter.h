@@ -15,6 +15,8 @@ class Sorter {
         int length;
         int * wordLengthCheckpoints;
         int lastCheckpoint;
+        int beginning = 0;
+        int maxWordLength;
     public:
         Sorter();
         void readWordFile(ifstream& inputFile);

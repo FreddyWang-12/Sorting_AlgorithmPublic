@@ -40,6 +40,7 @@ void Sorter::sortWordsByWordLength(int &start, int &end){
             sortWordsByWordLength(start, firstHalf);
             sortWordsByWordLength(secondHalf, end);
         }
+        maxWordLength = strlen(allWords[length - 1]);
     }
 }
 
@@ -56,9 +57,8 @@ void Sorter::sortWordSectionAlpha(int &start, int &end){
 }
 
 void Sorter::sortAllWordsAlphabetically() {
-    int beginning = 0;
     sortWordSectionAlpha(beginning, wordLengthCheckpoints[0]);
-    for(int i = 0; i < strlen(allWords[length - 1]) - 1; i++){
+    for(int i = 0; i < maxWordLength - 1; i++){
         int nextIndex = wordLengthCheckpoints[i] + 1;
         sortWordSectionAlpha(nextIndex, wordLengthCheckpoints[i + 1]);
     }
@@ -114,7 +114,7 @@ void Sorter::createAlphabeticalCheckpoints() {
     if(wordLengthCheckpoints != nullptr) {
         delete[] wordLengthCheckpoints;
     }
-    wordLengthCheckpoints = new int[strlen(allWords[length - 1])];
+    wordLengthCheckpoints = new int[maxWordLength];
     int index = 0;
 
     for(int i = 0; i < length - 1; i++) {
