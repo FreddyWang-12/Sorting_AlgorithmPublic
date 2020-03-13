@@ -20,13 +20,13 @@ class Sorter {
     public:
         Sorter();
         void readWordFile(ifstream& inputFile);
-        void sortWordsByWordLength(int start, int end); //pass by reference
+        void sortWordsByWordLength(int &start, int &end); //pass by reference
         void sortWordSectionAlpha(int &start, int &end); // pass by reference
         void sortAllWordsAlphabetically();
         void printSortedWordFile(ofstream& outputFile);
-        void swap(int i, int j);
+        void swap(int &i, int &j);
         int& getListLength();
-        int partitionByWordLength(int start, int end);
+        int partitionByWordLength(int &start, int &end);
         int partitionAlphabetically(int &start, int &end);
         void createAlphabeticalCheckpoints();
 };
