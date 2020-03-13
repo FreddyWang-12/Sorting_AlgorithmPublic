@@ -74,10 +74,10 @@ void Sorter::printSortedWordFile(ofstream& outputFile){
     }
 }
 
-void Sorter::swap(int &i, int &j) {
-    char * temp = allWords[i];
-    allWords[i] = allWords[j];
-    allWords[j] = temp;
+void Sorter::swap(char *&i, char*&j) {
+    char * temp = i;
+    i = j;
+    j = temp;
 }
 
 int& Sorter::getListLength() {
@@ -89,11 +89,11 @@ int Sorter::partitionByWordLength(int &start, int &end) {
     for(int j = start; j < end; j++) {
         if (strlen(allWords[j]) < strlen(allWords[end])){
             i++;
-            swap(i, j);
+            swap(allWords[i], allWords[j]);
         }
     }
     i++;
-    swap(i, end);
+    swap(allWords[i], allWords[end]);
     return i;
 }
 
@@ -102,11 +102,11 @@ int Sorter::partitionAlphabetically(int &start, int &end) {
     for(int j = start; j < end; j++){
         if(strcmp(allWords[j], allWords[end]) < 0){
             i++;
-            swap(i, j);
+            swap(allWords[i], allWords[j]);
         }
     }
     i++;
-    swap(i, end);
+    swap(allWords[i], allWords[end]);
     return i;
 }
 

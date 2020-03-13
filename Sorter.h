@@ -24,7 +24,7 @@ class Sorter {
         void sortWordSectionAlpha(int &start, int &end); // pass by reference
         void sortAllWordsAlphabetically();
         void printSortedWordFile(ofstream& outputFile);
-        void swap(int &i, int &j);
+        void swap(char *&i, char *&j);
         int& getListLength();
         int partitionByWordLength(int &start, int &end);
         int partitionAlphabetically(int &start, int &end);
