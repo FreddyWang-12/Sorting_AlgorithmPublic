@@ -32,7 +32,7 @@ void Sorter::readWordFile(ifstream& inputFile){
     }
 }
 
-void Sorter::sortWordsByWordLength(int &start, int &end){
+void Sorter::sortWordsByWordLength(int start, int end){
     if(allWords != nullptr) {
         if (start < end) {
             int pivotPoint = partitionByWordLength(start, end);
