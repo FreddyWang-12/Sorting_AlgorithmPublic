@@ -74,13 +74,15 @@ int Sorter::partitionByWordLength(int start, int end) {
 // @param start: The starting index of the sort
 // @param end: The last index of the sort
 void Sorter::sortWordSectionAlpha(int start, int end){
-    if(allWords != nullptr) {
-        if (start < end) {
-            int pivotPoint = partitionAlphabetically(start, end);
-            int firstHalf = pivotPoint - 1;
-            int secondHalf = pivotPoint + 1;
-            sortWordSectionAlpha(start, firstHalf);
-            sortWordSectionAlpha(secondHalf, end);
+    while (start < end) {
+        int pivotPoint = partitionAlphabetically(start, end);
+        if(pivotPoint - start < end - pivotPoint){
+            sortWordSectionAlpha(start, pivotPoint - 1);
+            start = pivotPoint + 1;
+        }
+        else{
+            sortWordSectionAlpha(pivotPoint + 1, end);
+            start = pivotPoint - 1;
         }
     }
 }
