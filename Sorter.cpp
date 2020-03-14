@@ -38,12 +38,10 @@ void Sorter::readWordFile(ifstream& inputFile){
 // @param start: The starting index of the sort
 // @param end: The last index of the sort
 void Sorter::sortWordsByWordLength(int start, int end){
-    while (start < end) {
-        if (start < end) {
-            int pivotPoint = partitionByWordLength(start, end);
-            sortWordsByWordLength(start, pivotPoint - 1);
-            sortWordsByWordLength(pivotPoint + 1, end);
-        }
+    if (start < end) {
+        int pivotPoint = partitionByWordLength(start, end);
+        sortWordsByWordLength(start, pivotPoint - 1);
+        sortWordsByWordLength(pivotPoint + 1, end);
     }
     maxWordLength = strlen(allWords[length - 1]);
 }
