@@ -73,7 +73,6 @@ int Sorter::partitionByWordLength(int start, int end) {
 // word length. It is this method's job to sort a individual section.
 // @param start: The starting index of the sort
 // @param end: The last index of the sort
->>>>>>> d68464931dab1f8d9a49cb6fd761b9ad3831c670
 void Sorter::sortWordSectionAlpha(int start, int end){
     if(allWords != nullptr) {
         if (start < end) {
