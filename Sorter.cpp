@@ -7,6 +7,7 @@
 #include "iostream"
 #include "fstream"
 #include <string.h>
+#include "stdio.h"
 using namespace std;
 
 Sorter::Sorter(){
@@ -44,7 +45,7 @@ void Sorter::sortWordsByWordLength(int &start, int &end){
     }
 }
 
-void Sorter::sortWordSectionAlpha(int &start, int &end){
+void Sorter::sortWordSectionAlpha(int start, int end){
     if(allWords != nullptr) {
         if (start < end) {
             int pivotPoint = partitionAlphabetically(start, end);
@@ -84,7 +85,7 @@ int& Sorter::getListLength() {
     return length;
 }
 
-int Sorter::partitionByWordLength(int &start, int &end) {
+int Sorter::partitionByWordLength(int start, int end) {
     int i = start - 1;
     for(int j = start; j < end; j++) {
         if (strlen(allWords[j]) < strlen(allWords[end])){
@@ -97,10 +98,10 @@ int Sorter::partitionByWordLength(int &start, int &end) {
     return i;
 }
 
-int Sorter::partitionAlphabetically(int &start, int &end) {
+int Sorter::partitionAlphabetically(int start, int end) {
     int i = start - 1;
     for(int j = start; j < end; j++){
-        if(strcmp(allWords[j], allWords[end]) < 0){
+        if(strcmp(allWords[j],allWords[end]) < 0){
             i++;
             swap(allWords[i], allWords[j]);
         }
