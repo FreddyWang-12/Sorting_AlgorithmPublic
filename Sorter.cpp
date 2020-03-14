@@ -38,10 +38,14 @@ void Sorter::readWordFile(ifstream& inputFile){
 // @param start: The starting index of the sort
 // @param end: The last index of the sort
 void Sorter::sortWordsByWordLength(int start, int end){
-    if (start < end) {
-        int pivotPoint = partitionByWordLength(start, end);
-        sortWordsByWordLength(start, pivotPoint - 1);
-        sortWordsByWordLength(pivotPoint + 1, end);
+    if(allWords != nullptr) {
+        if (start < end) {
+            int pivotPoint = partitionByWordLength(start, end);
+            int firstHalf = pivotPoint - 1;
+            int otherHalf = pivotPoint + 1;
+            sortWordsByWordLength(start, firstHalf);
+            sortWordsByWordLength(otherHalf, end);
+        }
     }
     maxWordLength = strlen(allWords[length - 1]);
 }
@@ -50,7 +54,7 @@ void Sorter::sortWordsByWordLength(int start, int end){
 // @param end: The last index of the partion
 int Sorter::partitionByWordLength(int start, int end) {
     int i = start - 1;
-    for(int j = start; j < end; j++) {
+    for(int j = start; j < end - 1; j++) {
         if (strlen(allWords[j]) < strlen(allWords[end])){
             i++;
             swap(allWords[i], allWords[j]);
@@ -62,27 +66,25 @@ int Sorter::partitionByWordLength(int start, int end) {
 }
 
 // Sorts a section of the list alphabetically based on word length
-// Each part of the list will be sectioned off by checkpoints that 
-// mark the end of a section of the list. Each section is based on 
+// Each part of the list will be sectioned off by checkpoints that
+// mark the end of a section of the list. Each section is based on
 // word length. It is this method's job to sort a individual section.
 // @param start: The starting index of the sort
 // @param end: The last index of the sort
 void Sorter::sortWordSectionAlpha(int start, int end){
-    while (start < end) {
-        int pivotPoint = partitionAlphabetically(start, end);
-        if(pivotPoint - start < end - pivotPoint){
-            sortWordSectionAlpha(start, pivotPoint - 1);
-            start = pivotPoint + 1;
-        }
-        else{
-            sortWordSectionAlpha(pivotPoint + 1, end);
-            start = pivotPoint - 1;
+    if(allWords != nullptr) {
+        if (start < end) {
+            int pivotPoint = partitionAlphabetically(start, end);
+            int firstHalf = pivotPoint - 1;
+            int secondHalf = pivotPoint + 1;
+            sortWordSectionAlpha(start, firstHalf);
+            sortWordSectionAlpha(secondHalf, end);
         }
     }
 }
 // Takes through all sections of the list (after being sorted by word length)
 // and sorts them all out alphabetically. These sections are determined by their
-// word length, so all 1-letter words will be sorted individually,all 2-letter 
+// word length, so all 1-letter words will be sorted individually,all 2-letter
 // words will be sorted individually, etc.
 void Sorter::sortAllWordsAlphabetically() {
     sortWordSectionAlpha(beginning, wordLengthCheckpoints[0]);
@@ -109,9 +111,9 @@ int Sorter::partitionAlphabetically(int start, int end) {
     swap(allWords[i], allWords[end]);
     return i;
 }
-// Each part of the list will be sectioned off by checkpoints that 
-// mark the end of a section of the list. Each section is based on 
-// word length. It is this method's job to sort create those 
+// Each part of the list will be sectioned off by checkpoints that
+// mark the end of a section of the list. Each section is based on
+// word length. It is this method's job to sort create those
 // checkpoints that will define those sections.
 void Sorter::createAlphabeticalCheckpoints() {
     if(wordLengthCheckpoints != nullptr) {
@@ -150,11 +152,4 @@ void Sorter::printSortedWordFile(ofstream& outputFile){
 // Returns the length of the word list
 int& Sorter::getListLength() {
     return length;
-}
-
-void Sorter::printAllWords() {
-    for(int i = 0; i < length; i++){
-        cout << allWords[i] << " ";
-    }
-    cout << endl;
 }
