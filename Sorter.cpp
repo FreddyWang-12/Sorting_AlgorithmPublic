@@ -26,10 +26,10 @@ void Sorter::readWordFile(ifstream& inputFile){
         length = atoi(number);
         allWords = new char *[length];
 
-        char word[70];
+        char word[50];
         for(int i = 0; i < length; i++){
-            allWords[i] = new char[70];
-            inputFile.getline(allWords[i], 70, '\n');;
+            allWords[i] = new char[50];
+            inputFile.getline(allWords[i], 50, '\n');;
         }
     }
 }
@@ -49,17 +49,28 @@ void Sorter::sortWordsByWordLength(int start, int end){
 // @param start: The starting index of the partition
 // @param end: The last index of the partion
 int Sorter::partitionByWordLength(int start, int end) {
+    int pivotLength = strlen(allWords[end]);
     int i = start - 1;
+
     for(int j = start; j < end; j++) {
-        if (strlen(allWords[j]) < strlen(allWords[end])){
+
+        if (strlen(allWords[j]) < pivotLength){
             i++;
-            swap(allWords[i], allWords[j]);
+            swap(&allWords[i], &allWords[j]);
         }
     }
-    i++;
-    swap(allWords[i], allWords[end]);
-    return i;
+    swap(&allWords[i + 1], &allWords[end]);
+    return i + 1;
 }
+// Swaps the values of 2 of the elements inside allWords
+// @param i, j: The two elements being swapped
+void Sorter::swap(char** a, char** b) {
+    char * temp = *a;
+    *a = *b;
+    *b = temp;
+}
+
+
 
 // Sorts a section of the list alphabetically based on word length
 // Each part of the list will be sectioned off by checkpoints that 
@@ -102,11 +113,11 @@ int Sorter::partitionAlphabetically(int start, int end) {
     for(int j = start; j < end - 1; j++){
         if(strcmp(allWords[j],allWords[end]) < 0){
             i++;
-            swap(allWords[i], allWords[j]);
+            swap(&allWords[i], &allWords[j]);
         }
     }
     i++;
-    swap(allWords[i], allWords[end]);
+    swap(&allWords[i], &allWords[end]);
     return i;
 }
 // Each part of the list will be sectioned off by checkpoints that 
@@ -129,14 +140,6 @@ void Sorter::createAlphabeticalCheckpoints() {
     lastCheckpoint = index - 1;
 }
 
-
-// Swaps the values of 2 of the elements inside allWords
-// @param i, j: The two elements being swapped
-void Sorter::swap(char *&i, char*&j) {
-    char * temp = i;
-    i = j;
-    j = temp;
-}
 
 
 // Creates an output file of all of the contents of the word list

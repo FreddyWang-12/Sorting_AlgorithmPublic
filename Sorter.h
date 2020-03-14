@@ -29,7 +29,7 @@ class Sorter {
         int partitionAlphabetically(int start, int end);
         void createAlphabeticalCheckpoints();
 
-        void swap(char *&i, char *&j);
+        void swap(char** a, char** b);
         void printAllWords();
 
         void printSortedWordFile(ofstream& outputFile);
