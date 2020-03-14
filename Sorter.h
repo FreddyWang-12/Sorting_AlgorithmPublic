@@ -30,6 +30,7 @@ class Sorter {
         void createAlphabeticalCheckpoints();
 
         void swap(char *&i, char *&j);
+        void printAllWords();
 
         void printSortedWordFile(ofstream& outputFile);
         int& getListLength();
