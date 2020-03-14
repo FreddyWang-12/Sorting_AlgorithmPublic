@@ -32,6 +32,8 @@ void Sorter::readWordFile(ifstream& inputFile){
     }
 }
 
+
+
 void Sorter::sortWordsByWordLength(int start, int end){
     if(allWords != nullptr) {
         if (start < end) {
@@ -44,6 +46,21 @@ void Sorter::sortWordsByWordLength(int start, int end){
         maxWordLength = strlen(allWords[length - 1]);
     }
 }
+
+int Sorter::partitionByWordLength(int start, int end) {
+    int i = start - 1;
+    for(int j = start; j < end; j++) {
+        if (strlen(allWords[j]) < strlen(allWords[end])){
+            i++;
+            swap(allWords[i], allWords[j]);
+        }
+    }
+    i++;
+    swap(allWords[i], allWords[end]);
+    return i;
+}
+
+
 
 void Sorter::sortWordSectionAlpha(int start, int end){
     if(allWords != nullptr) {
@@ -66,36 +83,6 @@ void Sorter::sortAllWordsAlphabetically() {
     int finalIndex = wordLengthCheckpoints[lastCheckpoint] + 1;
     int ending = length - 1;
     sortWordSectionAlpha(finalIndex, ending);
-}
-
-void Sorter::printSortedWordFile(ofstream& outputFile){
-    outputFile << length << endl;
-    for(int i = 0; i < length; i++){
-        outputFile << allWords[i] << endl;
-    }
-}
-
-void Sorter::swap(char *&i, char*&j) {
-    char * temp = i;
-    i = j;
-    j = temp;
-}
-
-int& Sorter::getListLength() {
-    return length;
-}
-
-int Sorter::partitionByWordLength(int start, int end) {
-    int i = start - 1;
-    for(int j = start; j < end; j++) {
-        if (strlen(allWords[j]) < strlen(allWords[end])){
-            i++;
-            swap(allWords[i], allWords[j]);
-        }
-    }
-    i++;
-    swap(allWords[i], allWords[end]);
-    return i;
 }
 
 int Sorter::partitionAlphabetically(int start, int end) {
@@ -125,4 +112,25 @@ void Sorter::createAlphabeticalCheckpoints() {
         }
     }
     lastCheckpoint = index - 1;
+}
+
+
+
+void Sorter::swap(char *&i, char*&j) {
+    char * temp = i;
+    i = j;
+    j = temp;
+}
+
+
+
+void Sorter::printSortedWordFile(ofstream& outputFile){
+    outputFile << length << endl;
+    for(int i = 0; i < length; i++){
+        outputFile << allWords[i] << endl;
+    }
+}
+
+int& Sorter::getListLength() {
+    return length;
 }
