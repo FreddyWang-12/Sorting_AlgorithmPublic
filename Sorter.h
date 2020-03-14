@@ -30,6 +30,8 @@ class Sorter {
         void createAlphabeticalCheckpoints();
 
         void swap(char** a, char** b);
+        int medianPivot(int first, int second, int third);
+        int randomPivot(int start, int end);
         void printAllWords();
 
         void printSortedWordFile(ofstream& outputFile);

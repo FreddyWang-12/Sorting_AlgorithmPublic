@@ -79,16 +79,10 @@ void Sorter::swap(char** a, char** b) {
 // @param start: The starting index of the sort
 // @param end: The last index of the sort
 void Sorter::sortWordSectionAlpha(int start, int end){
-    while (start < end) {
+    if (start < end) {
         int pivotPoint = partitionAlphabetically(start, end);
-        if(pivotPoint - start < end - pivotPoint){
-            sortWordSectionAlpha(start, pivotPoint - 1);
-            start = pivotPoint + 1;
-        }
-        else{
-            sortWordSectionAlpha(pivotPoint + 1, end);
-            start = pivotPoint - 1;
-        }
+        sortWordSectionAlpha(start, pivotPoint - 1);
+        sortWordSectionAlpha(pivotPoint + 1, end);
     }
 }
 // Takes through all sections of the list (after being sorted by word length)
@@ -110,7 +104,7 @@ void Sorter::sortAllWordsAlphabetically() {
 // @param end: The last index of the partion
 int Sorter::partitionAlphabetically(int start, int end) {
     int i = start - 1;
-    for(int j = start; j < end - 1; j++){
+    for(int j = start; j < end; j++){
         if(strcmp(allWords[j],allWords[end]) < 0){
             i++;
             swap(&allWords[i], &allWords[j]);
@@ -138,6 +132,26 @@ void Sorter::createAlphabeticalCheckpoints() {
         }
     }
     lastCheckpoint = index - 1;
+}
+
+
+
+int Sorter::medianPivot(int first, int second, int third){
+    if((first < second && second < third) || (third < second && second < first) ){
+        return second;
+    }
+    else if((second < first && first < third) || (third < first && first < second)){
+        return first;
+    }
+    else {
+        return second;
+    }
+}
+int Sorter::randomPivot(int start, int end){
+    int randOne = end + rand()%(end-start);
+    int randTwo = end + rand()%(end-start);
+    int randThree = end + rand()%(end-start);
+    return medianPivot(randOne, randTwo, randThree);
 }
 
 
