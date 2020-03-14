@@ -39,18 +39,10 @@ void Sorter::readWordFile(ifstream& inputFile){
 // @param end: The last index of the sort
 void Sorter::sortWordsByWordLength(int start, int end){
     while (start < end) {
-        int pivotPoint = partitionByWordLength(start, end);
-        cout << pivotPoint << " ";
-        printAllWords();
-        if(pivotPoint - start <= end - pivotPoint){
+        if (start < end) {
+            int pivotPoint = partitionByWordLength(start, end);
             sortWordsByWordLength(start, pivotPoint - 1);
-            start = pivotPoint + 1;
-            printAllWords();
-        }
-        else {
             sortWordsByWordLength(pivotPoint + 1, end);
-            end = pivotPoint - 1;
-            printAllWords();
         }
     }
     maxWordLength = strlen(allWords[length - 1]);
