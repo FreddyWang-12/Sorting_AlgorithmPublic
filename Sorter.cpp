@@ -37,20 +37,18 @@ void Sorter::readWordFile(ifstream& inputFile){
 
 // @param start: The starting index of the sort
 // @param end: The last index of the sort
-void Sorter::sortWordsByWordLength(int &start, int &end){
+void Sorter::sortWordsByWordLength(int start, int end){
     while (start < end) {
         int pivotPoint = partitionByWordLength(start, end);
         cout << pivotPoint << " ";
         printAllWords();
         if(pivotPoint - start <= end - pivotPoint){
-            int firstHalf = pivotPoint - 1;
-            sortWordsByWordLength(start, firstHalf);
+            sortWordsByWordLength(start, pivotPoint - 1);
             start = pivotPoint + 1;
             printAllWords();
         }
         else {
-            int secondHalf = pivotPoint + 1;
-            sortWordsByWordLength(secondHalf, end);
+            sortWordsByWordLength(pivotPoint + 1, end);
             end = pivotPoint - 1;
             printAllWords();
         }
