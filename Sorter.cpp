@@ -51,12 +51,9 @@ void Sorter::sortWordsByWordLength(int start, int end){
     }
     maxWordLength = strlen(allWords[length - 1]);
 }
-<<<<<<< HEAD
-=======
 // Partitions a section of the list by word length
 // @param start: The starting index of the partition
 // @param end: The last index of the partion
->>>>>>> d68464931dab1f8d9a49cb6fd761b9ad3831c670
 int Sorter::partitionByWordLength(int start, int end) {
     int i = start - 1;
     for(int j = start; j < end - 1; j++) {
@@ -69,9 +66,6 @@ int Sorter::partitionByWordLength(int start, int end) {
     swap(allWords[i], allWords[end]);
     return i;
 }
-
-<<<<<<< HEAD
-=======
 
 // Sorts a section of the list alphabetically based on word length
 // Each part of the list will be sectioned off by checkpoints that 
