@@ -191,10 +191,3 @@ void Sorter::printSortedWordFile(ofstream& outputFile){
 int& Sorter::getListLength() {
     return length;
 }
-
-void Sorter::printAllWords() {
-    for(int i = 0; i < length; i++){
-        cout << allWords[i] << " ";
-    }
-    cout << endl;
-}
