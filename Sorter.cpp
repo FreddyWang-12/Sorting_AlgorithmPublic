@@ -24,7 +24,6 @@ void Sorter::readWordFile(ifstream& inputFile){
         char number[15];
         inputFile.getline(number, 15, '\n');
         length = atoi(number);
-        lastIndex = length - 1;
         allWords = new char *[length];
 
         char word[50];
@@ -32,6 +31,7 @@ void Sorter::readWordFile(ifstream& inputFile){
             allWords[i] = new char[50];
             inputFile.getline(allWords[i], 50, '\n');;
         }
+        maxWordLength = strlen(allWords[length - 1]);
     }
 }
 
@@ -52,7 +52,6 @@ void Sorter::sortWordsByWordLength(int start, int end){
                 end = pivotPoint - 1;
             }
         }
-        maxWordLength = strlen(allWords[lastIndex]);
     }
 }
 // Partitions a section of the list by word length
@@ -96,11 +95,9 @@ void Sorter::sortWordSectionAlpha(int start, int end){
 void Sorter::sortAllWordsAlphabetically() {
     sortWordSectionAlpha(beginning, wordLengthCheckpoints[0]);
     for(int i = 0; i < maxWordLength - 1; i++){
-        int nextIndex = wordLengthCheckpoints[i] + 1;
-        int nextCheckpoint = wordLengthCheckpoints[i + 1];
-        sortWordSectionAlpha(nextIndex, wordLengthCheckpoints[i + 1]);
+        sortWordSectionAlpha(wordLengthCheckpoints[i] + 1, wordLengthCheckpoints[i + 1]);
     }
-    sortWordSectionAlpha(wordLengthCheckpoints[lastCheckpoint] + 1, lastIndex);
+    sortWordSectionAlpha(wordLengthCheckpoints[lastCheckpoint] + 1, length - 1);
 }
 // Partitions a section of the list via an alphabetical quicksort
 // @param start: The starting index of the partition
@@ -127,7 +124,7 @@ void Sorter::createAlphabeticalCheckpoints() {
     wordLengthCheckpoints = new int[maxWordLength];
     int index = 0;
 
-    for(int i = 0; i < lastIndex; i++) {
+    for(int i = 0; i < length - 1; i++) {
         if(strlen(allWords[i + 1]) > strlen(allWords[i])) {
             wordLengthCheckpoints[index] = i;
             index++;

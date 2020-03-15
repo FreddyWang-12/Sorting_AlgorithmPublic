@@ -16,7 +16,6 @@ class Sorter {
         int * wordLengthCheckpoints;
         int lastCheckpoint;
         int beginning = 0;
-        int lastIndex;
         int maxWordLength;
     public:
         Sorter();
