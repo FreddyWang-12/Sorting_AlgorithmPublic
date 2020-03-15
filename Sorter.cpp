@@ -91,16 +91,10 @@ void Sorter::swap(char** a, char** b) {
 // @param start: The starting index of the sort
 // @param end: The last index of the sort
 void Sorter::sortWordSectionAlpha(int start, int end){
-    while(start < end){
-        int pivotPoint = partitionAlphabetically(start, end);
-        if(pivotPoint - start < end - pivotPoint){
-            sortWordSectionAlpha(start, pivotPoint - 1);
-            start = pivotPoint + 1;
-        }
-        else{
-            sortWordSectionAlpha(pivotPoint + 1, end);
-            end = pivotPoint - 1;
-        }
+    if(start < end){
+        int pivotpoint = partitionAlphabetically(start, end);
+        sortWordSectionAlpha(start, pivotpoint - 1);
+        sortWordSectionAlpha(pivotpoint + 1, end);
     }
 }
 // Takes through all sections of the list (after being sorted by word length)
