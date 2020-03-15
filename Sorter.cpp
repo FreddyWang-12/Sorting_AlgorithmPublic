@@ -41,11 +41,13 @@ void Sorter::sortWordsByWordLength(int start, int end){
     while(start < end){
         int pivotPoint = partitionByWordLength(start, end);
         if(pivotPoint - start < end - pivotPoint){
-            sortWordsByWordLength(start, pivotPoint - 1);
+            int firsthalf = pivotPoint - 1;
+            sortWordsByWordLength(start, firsthalf);
             start = pivotPoint + 1;
         }
         else{
-            sortWordsByWordLength(pivotPoint + 1, end);
+            int secondHalf = pivotPoint + 1;
+            sortWordsByWordLength(secondHalf, end);
             end = pivotPoint - 1;
         }
     }
@@ -63,13 +65,9 @@ int Sorter::partitionByWordLength(int start, int end) {
             swap(&allWords[i], &allWords[j]);
         }
     }
-    swap(&allWords[i + 1], &allWords[end]);
-    return i + 1;
-}
-int Sorter::partitionWordLenRandomPivot(int start, int end) {
-    int pivot = randomPivot(start, end);
-    swap(&allWords[pivot], &allWords[end]);
-    return partitionByWordLength(start, end);
+    i++;
+    swap(&allWords[i], &allWords[end]);
+    return i;
 }
 
 
@@ -91,10 +89,10 @@ void Sorter::swap(char** a, char** b) {
 // @param start: The starting index of the sort
 // @param end: The last index of the sort
 void Sorter::sortWordSectionAlpha(int start, int end){
-    if(start < end){
-        int pivotpoint = partitionAlphabetically(start, end);
-        sortWordSectionAlpha(start, pivotpoint - 1);
-        sortWordSectionAlpha(pivotpoint + 1, end);
+    if (start < end) {
+        int pivotPoint = partitionAlphabetically(start, end);
+        sortWordSectionAlpha(start, pivotPoint - 1);
+        sortWordSectionAlpha(pivotPoint + 1, end);
     }
 }
 // Takes through all sections of the list (after being sorted by word length)

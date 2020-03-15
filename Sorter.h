@@ -23,7 +23,6 @@ class Sorter {
 
         void sortWordsByWordLength(int start, int end); //pass by reference
         int partitionByWordLength(int start, int end);
-        int partitionWordLenRandomPivot(int start, int end);
 
         void sortWordSectionAlpha(int start, int end); // pass by reference
         void sortAllWordsAlphabetically();
