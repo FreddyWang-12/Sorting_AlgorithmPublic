@@ -34,7 +34,7 @@ void Sorter::readWordFile(ifstream& inputFile){
     }
 }
 
-
+// Sorts all of the words in the list by their word length
 // @param start: The starting index of the sort
 // @param end: The last index of the sort
 void Sorter::sortWordsByWordLength(int start, int end){
@@ -68,16 +68,6 @@ int Sorter::partitionByWordLength(int start, int end) {
     i++;
     swap(&allWords[i], &allWords[end]);
     return i;
-}
-
-
-
-// Swaps the values of 2 of the elements inside allWords
-// @param i, j: The two elements being swapped
-void Sorter::swap(char** a, char** b) {
-    char * temp = *a;
-    *a = *b;
-    *b = temp;
 }
 
 
@@ -147,6 +137,13 @@ void Sorter::createAlphabeticalCheckpoints() {
 
 
 
+// Swaps the values of 2 of the elements inside allWords
+// @param i, j: The two elements being swapped
+void Sorter::swap(char** a, char** b) {
+    char * temp = *a;
+    *a = *b;
+    *b = temp;
+}
 int Sorter::medianPivot(int first, int second, int third){
     if(first > second){
         if(second > third){
