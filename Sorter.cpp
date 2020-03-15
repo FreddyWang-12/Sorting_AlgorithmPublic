@@ -145,33 +145,6 @@ void Sorter::swap(char** a, char** b) {
     *a = *b;
     *b = temp;
 }
-int Sorter::medianPivot(int first, int second, int third){
-    if(first > second){
-        if(second > third){
-            return second;
-        }
-        else if (first > third){
-            return third;
-        }
-        else{
-            return first;
-        }
-    }
-    else {
-        if(first > third){
-            return first;
-        }
-        else if(second > third){
-            return third;
-        }
-        else{
-            return second;
-        }
-    }
-}
-int Sorter::randomPivot(int start, int end){
-    return medianPivot(start + rand()%(end-start), start + rand()%(end-start), start + rand()%(end-start));
-}
 
 
 
