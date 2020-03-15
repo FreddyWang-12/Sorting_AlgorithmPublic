@@ -31,24 +31,26 @@ void Sorter::readWordFile(ifstream& inputFile){
             allWords[i] = new char[50];
             inputFile.getline(allWords[i], 50, '\n');;
         }
+        maxWordLength = strlen(allWords[length - 1]);
     }
 }
+
+
 
 // Sorts all of the words in the list by their word length
 // @param start: The starting index of the sort
 // @param end: The last index of the sort
 void Sorter::sortWordsByWordLength(int start, int end){
-    while(start < end){
-        int pivotPoint = partitionByWordLength(start, end);
-        if(pivotPoint - start < end - pivotPoint){
-            int firsthalf = pivotPoint - 1;
-            sortWordsByWordLength(start, firsthalf);
-            start = pivotPoint + 1;
-        }
-        else{
-            int secondHalf = pivotPoint + 1;
-            sortWordsByWordLength(secondHalf, end);
-            end = pivotPoint - 1;
+    if(sizeof(allWords) != 0) {
+        while (start < end) {
+            int pivotPoint = partitionByWordLength(start, end);
+            if (pivotPoint - start < end - pivotPoint) {
+                sortWordsByWordLength(start, pivotPoint - 1);
+                start = pivotPoint + 1;
+            } else {
+                sortWordsByWordLength(pivotPoint + 1, end);
+                end = pivotPoint - 1;
+            }
         }
     }
 }
@@ -65,9 +67,8 @@ int Sorter::partitionByWordLength(int start, int end) {
             swap(&allWords[i], &allWords[j]);
         }
     }
-    i++;
-    swap(&allWords[i], &allWords[end]);
-    return i;
+    swap(&allWords[i + 1], &allWords[end]);
+    return i + 1;
 }
 
 
@@ -79,10 +80,12 @@ int Sorter::partitionByWordLength(int start, int end) {
 // @param start: The starting index of the sort
 // @param end: The last index of the sort
 void Sorter::sortWordSectionAlpha(int start, int end){
-    if (start < end) {
-        int pivotPoint = partitionAlphabetically(start, end);
-        sortWordSectionAlpha(start, pivotPoint - 1);
-        sortWordSectionAlpha(pivotPoint + 1, end);
+    if(sizeof(allWords) != 0) {
+        if (start < end) {
+            int pivotPoint = partitionAlphabetically(start, end);
+            sortWordSectionAlpha(start, pivotPoint - 1);
+            sortWordSectionAlpha(pivotPoint + 1, end);
+        }
     }
 }
 // Takes through all sections of the list (after being sorted by word length)
@@ -96,9 +99,7 @@ void Sorter::sortAllWordsAlphabetically() {
         int nextCheckpoint = wordLengthCheckpoints[i + 1];
         sortWordSectionAlpha(nextIndex, nextCheckpoint);
     }
-    int finalIndex = wordLengthCheckpoints[lastCheckpoint] + 1;
-    int ending = length - 1;
-    sortWordSectionAlpha(finalIndex, ending);
+    sortWordSectionAlpha(wordLengthCheckpoints[lastCheckpoint] + 1, length - 1);
 }
 // Partitions a section of the list via an alphabetical quicksort
 // @param start: The starting index of the partition
@@ -111,9 +112,8 @@ int Sorter::partitionAlphabetically(int start, int end) {
             swap(&allWords[i], &allWords[j]);
         }
     }
-    i++;
-    swap(&allWords[i], &allWords[end]);
-    return i;
+    swap(&allWords[i + 1], &allWords[end]);
+    return i + 1;
 }
 // Each part of the list will be sectioned off by checkpoints that 
 // mark the end of a section of the list. Each section is based on 
@@ -123,7 +123,6 @@ void Sorter::createAlphabeticalCheckpoints() {
     if(wordLengthCheckpoints != nullptr) {
         delete[] wordLengthCheckpoints;
     }
-    maxWordLength = strlen(allWords[length - 1]);
     wordLengthCheckpoints = new int[maxWordLength];
     int index = 0;
 

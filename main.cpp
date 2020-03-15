@@ -13,11 +13,10 @@ int main(int argc, char* argv[]){
     Sorter x;
     x.readWordFile(inputFile);
 
-    int beginning = 0;
-    int endpoint = x.getListLength() - 1;
-    x.sortWordsByWordLength(beginning, endpoint);
+    x.sortWordsByWordLength(0, x.getListLength() - 1);
     x.createAlphabeticalCheckpoints();
     x.sortAllWordsAlphabetically();
+
     x.printSortedWordFile(outputFile);
     inputFile.close();
 
