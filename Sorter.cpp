@@ -92,11 +92,13 @@ void Sorter::sortWordSectionAlpha(int start, int end){
 void Sorter::sortAllWordsAlphabetically() {
     sortWordSectionAlpha(beginning, wordLengthCheckpoints[0]);
     for(int i = 0; i < maxWordLength - 1; i++){
-        //int nextIndex = wordLengthCheckpoints[i] + 1;
-        sortWordSectionAlpha(wordLengthCheckpoints[i] + 1, wordLengthCheckpoints[i + 1]);
+        int nextIndex = wordLengthCheckpoints[i] + 1;
+        int nextCheckpoint = wordLengthCheckpoints[i + 1];
+        sortWordSectionAlpha(nextIndex, nextCheckpoint);
     }
-    //int finalIndex = wordLengthCheckpoints[lastCheckpoint] + 1;
-    sortWordSectionAlpha(wordLengthCheckpoints[lastCheckpoint] + 1, length - 1);
+    int finalIndex = wordLengthCheckpoints[lastCheckpoint] + 1;
+    int ending = length - 1;
+    sortWordSectionAlpha(finalIndex, ending);
 }
 // Partitions a section of the list via an alphabetical quicksort
 // @param start: The starting index of the partition
