@@ -1,5 +1,10 @@
 //
 // Created by Frederick Wang on 3/5/20.
+// A class designed to take a list of words and
+// sort the out by length and then alphabetical
+// order as quickly and efficiently as possible.
+// CS2341 - Mark Fontenot
+// 3/15/2020
 //
 
 #include "Sorter.h"
