@@ -40,11 +40,13 @@ void Sorter::readWordFile(ifstream& inputFile){
 // @param start: The starting index of the sort
 // @param end: The last index of the sort
 void Sorter::sortWordsByWordLength(int start, int end){
-    if (start < end) {
-        int middle = (start + (end - 1))/2;
-        sortWordsByWordLength(start, middle);
-        sortWordsByWordLength(middle + 1, end);
-        mergeByWordLength(start, middle, end);
+    if(sizeof(allWords) != 0) {
+        if (start < end) {
+            int middle = (start + (end - 1)) / 2;
+            sortWordsByWordLength(start, middle);
+            sortWordsByWordLength(middle + 1, end);
+            mergeByWordLength(start, middle, end);
+        }
     }
 }
 // Takes a section of the overall word list (allWords), divides
@@ -88,8 +90,8 @@ void Sorter::mergeByWordLength(int start, int middle, int end) {
 
 
 // Sorts a section of the list alphabetically based on word length
-// Each part of the list will be sectioned off by checkpoints that 
-// mark the end of a section of the list. Each section is based on 
+// Each part of the list will be sectioned off by checkpoints that
+// mark the end of a section of the list. Each section is based on
 // word length. It is this method's job to sort a individual section.
 // @param start: The starting index of the sort
 // @param end: The last index of the sort
@@ -115,9 +117,9 @@ void Sorter::sortAllWordsAlphabetically() {
     }
     sortWordSectionAlpha(wordLengthCheckpoints[lastCheckpoint] + 1, length - 1);
 }
-// Partitions a section of the list via an alphabetical quicksort
+// Partitions a section of the list and sorts it alphabetically
 // @param start: The starting index of the partition
-// @param end: The last index of the partion
+// @param end: The last index of the partition
 int Sorter::partitionAlphabetically(int start, int end) {
     int i = start - 1;
     for(int j = start; j < end; j++){
@@ -149,9 +151,6 @@ void Sorter::createAlphabeticalCheckpoints() {
     }
     lastCheckpoint = index - 1;
 }
-
-
-
 // Swaps the values of 2 of the elements inside allWords
 // @param i, j: The two elements being swapped
 void Sorter::swap(char** a, char** b) {
