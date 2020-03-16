@@ -21,10 +21,10 @@ class Sorter {
         Sorter();
         void readWordFile(ifstream& inputFile);
 
-        void sortWordsByWordLength(int start, int end); //pass by reference
-        int partitionByWordLength(int start, int end);
+        void sortWordsByWordLength(int start, int end);
+        void mergeByWordLength(int start, int middle, int end);
 
-        void sortWordSectionAlpha(int start, int end); // pass by reference
+        void sortWordSectionAlpha(int start, int end);
         void sortAllWordsAlphabetically();
         int partitionAlphabetically(int start, int end);
         void createAlphabeticalCheckpoints();

@@ -31,7 +31,6 @@ void Sorter::readWordFile(ifstream& inputFile){
             allWords[i] = new char[50];
             inputFile.getline(allWords[i], 50, '\n');;
         }
-        maxWordLength = strlen(allWords[length - 1]);
     }
 }
 
@@ -41,34 +40,49 @@ void Sorter::readWordFile(ifstream& inputFile){
 // @param start: The starting index of the sort
 // @param end: The last index of the sort
 void Sorter::sortWordsByWordLength(int start, int end){
-    if(sizeof(allWords) != 0) {
-        while (start < end) {
-            int pivotPoint = partitionByWordLength(start, end);
-            if (pivotPoint - start < end - pivotPoint) {
-                sortWordsByWordLength(start, pivotPoint - 1);
-                start = pivotPoint + 1;
-            } else {
-                sortWordsByWordLength(pivotPoint + 1, end);
-                end = pivotPoint - 1;
-            }
-        }
+    if (start < end) {
+        int middle = (start + (end - 1))/2;
+        sortWordsByWordLength(start, middle);
+        sortWordsByWordLength(middle + 1, end);
+        mergeByWordLength(start, middle, end);
     }
 }
-// Partitions a section of the list by word length
-// @param start: The starting index of the partition
-// @param end: The last index of the partion
-int Sorter::partitionByWordLength(int start, int end) {
-    int pivotLength = strlen(allWords[end]);
-    int i = start - 1;
+// Takes a section of the overall word list (allWords), divides
+// in half, and merges its two halves together based on ascending
+// word length
+// @param start: The starting index of the section in allWords
+// @param middle: The middle index of the section in allWords
+// @param end: The last index of the section in allWords
+void Sorter::mergeByWordLength(int start, int middle, int end) {
+    int i = start;
+    int j = middle + 1;
+    int sortIndex = 0;
+    char* sortedWords[end - start + 1];
 
-    for(int j = start; j < end; j++) {
-        if (strlen(allWords[j]) < pivotLength){
+    while(i <= middle && j <= end){
+        if(strlen(allWords[i]) <= strlen(allWords[j])){
+            sortedWords[sortIndex] = allWords[i];
             i++;
-            swap(&allWords[i], &allWords[j]);
         }
+        else{
+            sortedWords[sortIndex] = allWords[j];
+            j++;
+        }
+        sortIndex++;
     }
-    swap(&allWords[i + 1], &allWords[end]);
-    return i + 1;
+    while(i <= middle){
+        sortedWords[sortIndex] = allWords[i];
+        sortIndex++;
+        i++;
+    }
+    while(j <= end){
+        sortedWords[sortIndex] = allWords[j];
+        sortIndex++;
+        j++;
+    }
+    for(i = start; i <= end; i++){
+        allWords[i] = sortedWords[i - start];
+    }
 }
 
 
@@ -90,7 +104,7 @@ void Sorter::sortWordSectionAlpha(int start, int end){
 }
 // Takes through all sections of the list (after being sorted by word length)
 // and sorts them all out alphabetically. These sections are determined by their
-// word length, so all 1-letter words will be sorted individually,all 2-letter 
+// word length, so all 1-letter words will be sorted individually, all 2-letter
 // words will be sorted individually, etc.
 void Sorter::sortAllWordsAlphabetically() {
     sortWordSectionAlpha(beginning, wordLengthCheckpoints[0]);
@@ -123,6 +137,7 @@ void Sorter::createAlphabeticalCheckpoints() {
     if(wordLengthCheckpoints != nullptr) {
         delete[] wordLengthCheckpoints;
     }
+    maxWordLength = strlen(allWords[length - 1]);
     wordLengthCheckpoints = new int[maxWordLength];
     int index = 0;
 
